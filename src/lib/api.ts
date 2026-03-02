@@ -569,12 +569,12 @@ export const publicApi = {
         },
         body: JSON.stringify(data),
       });
-      
+
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.error || 'فشل إرسال الاستبيان');
       }
-      
+
       return response.json();
     } catch (error: any) {
       console.error('Error submitting feedback:', error);
@@ -661,11 +661,11 @@ export const publicApi = {
         },
         body: JSON.stringify(payload),
       });
-      
+
       // Try to parse JSON, but handle HTML error pages gracefully
       const contentType = response.headers.get('content-type');
       let data;
-      
+
       if (contentType && contentType.includes('application/json')) {
         data = await response.json();
       } else {
@@ -673,11 +673,11 @@ export const publicApi = {
         console.error('Non-JSON response:', text);
         throw new Error('فشل إرسال طلب التوظيف: استجابة غير صحيحة من الخادم');
       }
-      
+
       if (!response.ok) {
         throw new Error(data.error || 'فشل إرسال طلب التوظيف');
       }
-      
+
       return data;
     } catch (error: any) {
       console.error('Error submitting job application:', error);
@@ -708,7 +708,7 @@ export const publicApi = {
         },
         body: JSON.stringify(payload),
       });
-      
+
       if (!response.ok) {
         // Try to parse error as JSON, but handle HTML errors
         let errorMessage = 'فشل إرسال طلب الشراكة';
@@ -721,7 +721,7 @@ export const publicApi = {
         }
         throw new Error(errorMessage);
       }
-      
+
       return response.json();
     } catch (error: any) {
       console.error('Error submitting partnership request:', error);

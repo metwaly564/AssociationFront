@@ -11,8 +11,8 @@ interface HeaderProps {
 
 export function Header({ currentPage, setCurrentPage, siteSettings = {} }: HeaderProps) {
   const { debugSettings, refreshSettings } = useTheme();
-  const siteName = siteSettings?.site_name?.value ;
-  const siteDescription = siteSettings?.site_description?.value ;
+  const siteName = siteSettings?.site_name?.value;
+  const siteDescription = siteSettings?.site_description?.value;
   const siteLogo = siteSettings?.site_logo?.value;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -76,14 +76,7 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
             ) : (
               <Heart className="w-10 h-10 text-primary" fill="currentColor" />
             )}
-            <div className="text-right">
-              <h1 className="text-xl font-bold text-primary">
-                {siteName}
-              </h1>
-              {siteDescription && (
-                <p className="text-xs text-secondary">{siteDescription}</p>
-              )}
-            </div>
+            
           </button>
 
           {/* === شريط التنقل === */}
@@ -105,13 +98,12 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                   >
                     <button
                       onClick={() => setAboutOpen((v) => !v)}
-                      className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        aboutOpen ||
-                        currentPage.startsWith("about-") ||
-                        currentPage === "about"
+                      className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${aboutOpen ||
+                          currentPage.startsWith("about-") ||
+                          currentPage === "about"
                           ? "bg-primary text-white"
                           : "text-primary hover:bg-theme"
-                      }`}
+                        }`}
                     >
                       <span>{item.label}</span>
                       <ChevronDown className="w-4 h-4" />
@@ -124,11 +116,10 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                             setCurrentPage('about');
                             setAboutOpen(false);
                           }}
-                          className={`block w-full text-right px-4 py-2 text-sm transition-colors ${
-                            currentPage === 'about'
+                          className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === 'about'
                               ? 'bg-primary/10 text-primary'
                               : 'text-primary hover:bg-theme'
-                          }`}
+                            }`}
                         >
                           من نحن
                         </button>
@@ -139,11 +130,10 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                               setCurrentPage(sub.id);
                               setAboutOpen(false);
                             }}
-                            className={`block w-full text-right px-4 py-2 text-sm transition-colors ${
-                              currentPage === sub.id
+                            className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
                                 ? "bg-emerald-50 text-emerald-700"
                                 : "text-gray-700 hover:bg-gray-50"
-                            }`}
+                              }`}
                           >
                             {sub.label}
                           </button>
@@ -178,11 +168,10 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                   >
                     <button
                       onClick={() => setFeedbackOpen((v) => !v)}
-                      className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        feedbackOpen || currentPage.startsWith("feedback-")
+                      className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${feedbackOpen || currentPage.startsWith("feedback-")
                           ? "bg-primary text-white"
                           : "text-primary hover:bg-theme"
-                      }`}
+                        }`}
                     >
                       <span>{item.label}</span>
                       <ChevronDown className="w-4 h-4" />
@@ -196,11 +185,10 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                               setCurrentPage(sub.id);
                               setFeedbackOpen(false);
                             }}
-                            className={`block w-full text-right px-4 py-2 text-sm transition-colors ${
-                              currentPage === sub.id
+                            className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
                                 ? "bg-emerald-50 text-emerald-700"
                                 : "text-gray-700 hover:bg-gray-50"
-                            }`}
+                              }`}
                           >
                             {sub.label}
                           </button>
@@ -227,13 +215,12 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                   >
                     <button
                       onClick={() => setProgramsOpen((v) => !v)}
-                      className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        programsOpen ||
-                        currentPage === "programs" ||
-                        currentPage === "programs-annual"
+                      className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${programsOpen ||
+                          currentPage === "programs" ||
+                          currentPage === "programs-annual"
                           ? "bg-primary text-white"
                           : "text-primary hover:bg-theme"
-                      }`}
+                        }`}
                     >
                       <span>{item.label}</span>
                       <ChevronDown className="w-4 h-4" />
@@ -247,11 +234,10 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                               setCurrentPage(sub.id);
                               setProgramsOpen(false);
                             }}
-                            className={`block w-full text-right px-4 py-2 text-sm transition-colors ${
-                              currentPage === sub.id
+                            className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
                                 ? "bg-emerald-50 text-emerald-700"
                                 : "text-gray-700 hover:bg-gray-50"
-                            }`}
+                              }`}
                           >
                             {sub.label}
                           </button>
@@ -278,16 +264,15 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                   >
                     <button
                       onClick={() => setMembershipOpen((v) => !v)}
-                      className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        membershipOpen ||
-                        [
-                          "membership",
-                          "membership-jobs",
-                          "membership-partnership",
-                        ].includes(currentPage)
+                      className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${membershipOpen ||
+                          [
+                            "membership",
+                            "membership-jobs",
+                            "membership-partnership",
+                          ].includes(currentPage)
                           ? "bg-primary text-white"
                           : "text-primary hover:bg-theme"
-                      }`}
+                        }`}
                     >
                       <span>{item.label}</span>
                       <ChevronDown className="w-4 h-4" />
@@ -301,11 +286,10 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                               setCurrentPage(sub.id);
                               setMembershipOpen(false);
                             }}
-                            className={`block w-full text-right px-4 py-2 text-sm transition-colors ${
-                              currentPage === sub.id
+                            className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
                                 ? "bg-emerald-50 text-emerald-700"
                                 : "text-gray-700 hover:bg-gray-50"
-                            }`}
+                              }`}
                           >
                             {sub.label}
                           </button>
@@ -324,124 +308,119 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                 <button
                   key={item.id}
                   onClick={() => setCurrentPage(item.id)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    currentPage === item.id
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${currentPage === item.id
                       ? "bg-emerald-600 text-white"
                       : "text-gray-700 hover:bg-gray-100"
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </button>
               );
             })}
-          {/* Governance dropdown (الحوكمة) */}
-          <div className="hidden lg:flex items-center gap-1">
-            <div
-              className="relative"
-              onMouseEnter={() => {
-                clearTimeout(governanceTimer);
-                setGovernanceOpen(true);
-              }}
-              onMouseLeave={() => {
-                governanceTimer = setTimeout(() => setGovernanceOpen(false), 250);
-              }}
-            >
-              <button
-                onClick={() => setGovernanceOpen((v) => !v)}
-                className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  governanceOpen ||
-                  [
-                    "gov-policies",
-                    "gov-operational-budget",
-                    "gov-financial-statements",
-                    "gov-reports",
-                  ].includes(currentPage)
-                    ? "bg-emerald-600 text-white"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
+            {/* Governance dropdown (الحوكمة) */}
+            <div className="hidden lg:flex items-center gap-1">
+              <div
+                className="relative"
+                onMouseEnter={() => {
+                  clearTimeout(governanceTimer);
+                  setGovernanceOpen(true);
+                }}
+                onMouseLeave={() => {
+                  governanceTimer = setTimeout(() => setGovernanceOpen(false), 250);
+                }}
               >
-                <span>الحوكمة</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
-              {governanceOpen && (
-                <div className="absolute right-0 mt-2 w-80 bg-white border rounded-lg shadow-lg py-2 z-50">
-                  {[ 
-                    { id: "gov-policies", label: "الأنظمة واللوائح والسياسات" },
-                    { id: "gov-operational-budget", label: "الخطة التشغيلية والموازنة" },
-                    { id: "gov-financial-statements", label: "القوائم والتقارير المالية" },
-                    { id: "gov-reports", label: "التقارير" },
-                  ].map((sub) => (
-                    <button
-                      key={sub.id}
-                      onClick={() => {
-                        setCurrentPage(sub.id);
-                        setGovernanceOpen(false);
-                      }}
-                      className={`block w-full text-right px-4 py-2 text-sm transition-colors ${
-                        currentPage === sub.id
-                          ? "bg-emerald-50 text-emerald-700"
-                          : "text-gray-700 hover:bg-gray-50"
-                      }`}
-                    >
-                      {sub.label}
-                    </button>
-                  ))}
-                </div>
-              )}
+                <button
+                  onClick={() => setGovernanceOpen((v) => !v)}
+                  className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${governanceOpen ||
+                      [
+                        "gov-policies",
+                        "gov-operational-budget",
+                        "gov-financial-statements",
+                        "gov-reports",
+                      ].includes(currentPage)
+                      ? "bg-emerald-600 text-white"
+                      : "text-gray-700 hover:bg-gray-100"
+                    }`}
+                >
+                  <span>الحوكمة</span>
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+                {governanceOpen && (
+                  <div className="absolute right-0 mt-2 w-80 bg-white border rounded-lg shadow-lg py-2 z-50">
+                    {[
+                      { id: "gov-policies", label: "الأنظمة واللوائح والسياسات" },
+                      { id: "gov-operational-budget", label: "الخطة التشغيلية والموازنة" },
+                      { id: "gov-financial-statements", label: "القوائم والتقارير المالية" },
+                      { id: "gov-reports", label: "التقارير" },
+                    ].map((sub) => (
+                      <button
+                        key={sub.id}
+                        onClick={() => {
+                          setCurrentPage(sub.id);
+                          setGovernanceOpen(false);
+                        }}
+                        className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
+                            ? "bg-emerald-50 text-emerald-700"
+                            : "text-gray-700 hover:bg-gray-50"
+                          }`}
+                      >
+                        {sub.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* المزيد */}
-          <div className="hidden lg:flex items-center gap-1">
-            <div
-              className="relative"
-              onMouseEnter={() => {
-                clearTimeout(moreTimer);
-                setMoreOpen(true);
-              }}
-              onMouseLeave={() => {
-                moreTimer = setTimeout(() => setMoreOpen(false), 250);
-              }}
-            >
-              <button
-                onClick={() => setMoreOpen((v) => !v)}
-                className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  moreOpen || ["news", "volunteering", "contact"].includes(currentPage)
-                    ? "bg-emerald-600 text-white"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
+            {/* المزيد */}
+            <div className="hidden lg:flex items-center gap-1">
+              <div
+                className="relative"
+                onMouseEnter={() => {
+                  clearTimeout(moreTimer);
+                  setMoreOpen(true);
+                }}
+                onMouseLeave={() => {
+                  moreTimer = setTimeout(() => setMoreOpen(false), 250);
+                }}
               >
-                <span>المزيد</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
-              {moreOpen && (
-                <div className="absolute right-0 mt-2 w-64 bg-white border rounded-lg shadow-lg py-2 z-50">
-                  {[
-                    { id: "news", label: "الأخبار" },
-                    { id: "volunteering", label: "التطوع" },
-                    { id: "contact", label: "تواصل معنا" },
-                  ].map((sub) => (
-                    <button
-                      key={sub.id}
-                      onClick={() => {
-                        setCurrentPage(sub.id);
-                        setMoreOpen(false);
-                      }}
-                      className={`block w-full text-right px-4 py-2 text-sm transition-colors ${
-                        currentPage === sub.id
-                          ? "bg-emerald-50 text-emerald-700"
-                          : "text-gray-700 hover:bg-gray-50"
-                      }`}
-                    >
-                      {sub.label}
-                    </button>
-                  ))}
-                </div>
-              )}
+                <button
+                  onClick={() => setMoreOpen((v) => !v)}
+                  className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${moreOpen || ["news", "volunteering", "contact"].includes(currentPage)
+                      ? "bg-emerald-600 text-white"
+                      : "text-gray-700 hover:bg-gray-100"
+                    }`}
+                >
+                  <span>المزيد</span>
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+                {moreOpen && (
+                  <div className="absolute right-0 mt-2 w-64 bg-white border rounded-lg shadow-lg py-2 z-50">
+                    {[
+                      { id: "news", label: "الأخبار" },
+                      { id: "volunteering", label: "التطوع" },
+                      { id: "contact", label: "تواصل معنا" },
+                    ].map((sub) => (
+                      <button
+                        key={sub.id}
+                        onClick={() => {
+                          setCurrentPage(sub.id);
+                          setMoreOpen(false);
+                        }}
+                        className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
+                            ? "bg-emerald-50 text-emerald-700"
+                            : "text-gray-700 hover:bg-gray-50"
+                          }`}
+                      >
+                        {sub.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
           </nav>
-          
+
 
           {/* زر التبرع */}
           <button
@@ -471,217 +450,217 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-  {mobileMenuOpen && (
-  <div className="lg:hidden border-t bg-white">
-    <div className="py-3 flex flex-col gap-1">
+        {mobileMenuOpen && (
+          <div className="lg:hidden border-t bg-white">
+            <div className="py-3 flex flex-col gap-1">
 
-      {/* الرئيسية */}
-      <button
-        onClick={() => {
-          setCurrentPage("home");
-          setMobileMenuOpen(false);
-        }}
-        className="text-right px-4 py-2 text-sm hover:bg-gray-100"
-      >
-        الرئيسية
-      </button>
+              {/* الرئيسية */}
+              <button
+                onClick={() => {
+                  setCurrentPage("home");
+                  setMobileMenuOpen(false);
+                }}
+                className="text-right px-4 py-2 text-sm hover:bg-gray-100"
+              >
+                الرئيسية
+              </button>
 
-      {/* ===== من نحن ===== */}
-      <button
-        onClick={() => setAboutOpen(!aboutOpen)}
-        className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
-      >
-        <span>تعرف علينا</span>
-        <ChevronDown className="w-4 h-4" />
-      </button>
+              {/* ===== من نحن ===== */}
+              <button
+                onClick={() => setAboutOpen(!aboutOpen)}
+                className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
+              >
+                <span>تعرف علينا</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
 
-      {aboutOpen && (
-        <div className="flex flex-col bg-gray-50">
-          <button
-            onClick={() => {
-              setCurrentPage("about");
-              setMobileMenuOpen(false);
-            }}
-            className="text-right px-6 py-2 text-sm hover:bg-gray-100"
-          >
-            من نحن
-          </button>
+              {aboutOpen && (
+                <div className="flex flex-col bg-gray-50">
+                  <button
+                    onClick={() => {
+                      setCurrentPage("about");
+                      setMobileMenuOpen(false);
+                    }}
+                    className="text-right px-6 py-2 text-sm hover:bg-gray-100"
+                  >
+                    من نحن
+                  </button>
 
-          {aboutItems.map((sub) => (
-            <button
-              key={sub.id}
-              onClick={() => {
-                setCurrentPage(sub.id);
-                setMobileMenuOpen(false);
-              }}
-              className="text-right px-6 py-2 text-sm hover:bg-gray-100"
-            >
-              {sub.label}
-            </button>
-          ))}
-        </div>
-      )}
+                  {aboutItems.map((sub) => (
+                    <button
+                      key={sub.id}
+                      onClick={() => {
+                        setCurrentPage(sub.id);
+                        setMobileMenuOpen(false);
+                      }}
+                      className="text-right px-6 py-2 text-sm hover:bg-gray-100"
+                    >
+                      {sub.label}
+                    </button>
+                  ))}
+                </div>
+              )}
 
-      {/* ===== البرامج ===== */}
-      <button
-        onClick={() => setProgramsOpen(!programsOpen)}
-        className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
-      >
-        <span>البرامج والمشاريع</span>
-        <ChevronDown className="w-4 h-4" />
-      </button>
+              {/* ===== البرامج ===== */}
+              <button
+                onClick={() => setProgramsOpen(!programsOpen)}
+                className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
+              >
+                <span>البرامج والمشاريع</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
 
-      {programsOpen && (
-        <div className="flex flex-col bg-gray-50">
-          {programsItems.map((sub) => (
-            <button
-              key={sub.id}
-              onClick={() => {
-                setCurrentPage(sub.id);
-                setMobileMenuOpen(false);
-              }}
-              className="text-right px-6 py-2 text-sm hover:bg-gray-100"
-            >
-              {sub.label}
-            </button>
-          ))}
-        </div>
-      )}
+              {programsOpen && (
+                <div className="flex flex-col bg-gray-50">
+                  {programsItems.map((sub) => (
+                    <button
+                      key={sub.id}
+                      onClick={() => {
+                        setCurrentPage(sub.id);
+                        setMobileMenuOpen(false);
+                      }}
+                      className="text-right px-6 py-2 text-sm hover:bg-gray-100"
+                    >
+                      {sub.label}
+                    </button>
+                  ))}
+                </div>
+              )}
 
-      {/* ===== رأيك يهمنا ===== */}
-      <button
-        onClick={() => setFeedbackOpen(!feedbackOpen)}
-        className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
-      >
-        <span>رأيك يهمنا</span>
-        <ChevronDown className="w-4 h-4" />
-      </button>
+              {/* ===== رأيك يهمنا ===== */}
+              <button
+                onClick={() => setFeedbackOpen(!feedbackOpen)}
+                className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
+              >
+                <span>رأيك يهمنا</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
 
-      {feedbackOpen && (
-        <div className="flex flex-col bg-gray-50">
-          {[
-            { id: "feedback-employees", label: "استبيان رضا الموظفين" },
-            { id: "feedback-volunteers", label: "استبيان رضا المتطوعين" },
-            { id: "feedback-donors", label: "استبيان رضا المتبرعين" },
-            { id: "feedback-beneficiaries", label: "استبيان رضا المستفيدين" },
-            { id: "feedback-stakeholders", label: "استبيان رضا أصحاب العلاقة" },
-            { id: "feedback-results", label: "نتائج الاستبيانات" },
-          ].map((sub) => (
-            <button
-              key={sub.id}
-              onClick={() => {
-                setCurrentPage(sub.id);
-                setMobileMenuOpen(false);
-              }}
-              className="text-right px-6 py-2 text-sm hover:bg-gray-100"
-            >
-              {sub.label}
-            </button>
-          ))}
-        </div>
-      )}
+              {feedbackOpen && (
+                <div className="flex flex-col bg-gray-50">
+                  {[
+                    { id: "feedback-employees", label: "استبيان رضا الموظفين" },
+                    { id: "feedback-volunteers", label: "استبيان رضا المتطوعين" },
+                    { id: "feedback-donors", label: "استبيان رضا المتبرعين" },
+                    { id: "feedback-beneficiaries", label: "استبيان رضا المستفيدين" },
+                    { id: "feedback-stakeholders", label: "استبيان رضا أصحاب العلاقة" },
+                    { id: "feedback-results", label: "نتائج الاستبيانات" },
+                  ].map((sub) => (
+                    <button
+                      key={sub.id}
+                      onClick={() => {
+                        setCurrentPage(sub.id);
+                        setMobileMenuOpen(false);
+                      }}
+                      className="text-right px-6 py-2 text-sm hover:bg-gray-100"
+                    >
+                      {sub.label}
+                    </button>
+                  ))}
+                </div>
+              )}
 
-      {/* ===== العضوية ===== */}
-      <button
-        onClick={() => setMembershipOpen(!membershipOpen)}
-        className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
-      >
-        <span>العضوية</span>
-        <ChevronDown className="w-4 h-4" />
-      </button>
+              {/* ===== العضوية ===== */}
+              <button
+                onClick={() => setMembershipOpen(!membershipOpen)}
+                className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
+              >
+                <span>العضوية</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
 
-      {membershipOpen && (
-        <div className="flex flex-col bg-gray-50">
-          {membershipItems.map((sub) => (
-            <button
-              key={sub.id}
-              onClick={() => {
-                setCurrentPage(sub.id);
-                setMobileMenuOpen(false);
-              }}
-              className="text-right px-6 py-2 text-sm hover:bg-gray-100"
-            >
-              {sub.label}
-            </button>
-          ))}
-        </div>
-      )}
+              {membershipOpen && (
+                <div className="flex flex-col bg-gray-50">
+                  {membershipItems.map((sub) => (
+                    <button
+                      key={sub.id}
+                      onClick={() => {
+                        setCurrentPage(sub.id);
+                        setMobileMenuOpen(false);
+                      }}
+                      className="text-right px-6 py-2 text-sm hover:bg-gray-100"
+                    >
+                      {sub.label}
+                    </button>
+                  ))}
+                </div>
+              )}
 
-      {/* ===== الحوكمة ===== */}
-      <button
-        onClick={() => setGovernanceOpen(!governanceOpen)}
-        className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
-      >
-        <span>الحوكمة</span>
-        <ChevronDown className="w-4 h-4" />
-      </button>
+              {/* ===== الحوكمة ===== */}
+              <button
+                onClick={() => setGovernanceOpen(!governanceOpen)}
+                className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
+              >
+                <span>الحوكمة</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
 
-      {governanceOpen && (
-        <div className="flex flex-col bg-gray-50">
-          {[
-            { id: "gov-policies", label: "الأنظمة واللوائح والسياسات" },
-            { id: "gov-operational-budget", label: "الخطة التشغيلية والموازنة" },
-            { id: "gov-financial-statements", label: "القوائم والتقارير المالية" },
-            { id: "gov-reports", label: "التقارير" },
-          ].map((sub) => (
-            <button
-              key={sub.id}
-              onClick={() => {
-                setCurrentPage(sub.id);
-                setMobileMenuOpen(false);
-              }}
-              className="text-right px-6 py-2 text-sm hover:bg-gray-100"
-            >
-              {sub.label}
-            </button>
-          ))}
-        </div>
-      )}
+              {governanceOpen && (
+                <div className="flex flex-col bg-gray-50">
+                  {[
+                    { id: "gov-policies", label: "الأنظمة واللوائح والسياسات" },
+                    { id: "gov-operational-budget", label: "الخطة التشغيلية والموازنة" },
+                    { id: "gov-financial-statements", label: "القوائم والتقارير المالية" },
+                    { id: "gov-reports", label: "التقارير" },
+                  ].map((sub) => (
+                    <button
+                      key={sub.id}
+                      onClick={() => {
+                        setCurrentPage(sub.id);
+                        setMobileMenuOpen(false);
+                      }}
+                      className="text-right px-6 py-2 text-sm hover:bg-gray-100"
+                    >
+                      {sub.label}
+                    </button>
+                  ))}
+                </div>
+              )}
 
-      {/* ===== المزيد ===== */}
-      <button
-        onClick={() => setMoreOpen(!moreOpen)}
-        className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
-      >
-        <span>المزيد</span>
-        <ChevronDown className="w-4 h-4" />
-      </button>
+              {/* ===== المزيد ===== */}
+              <button
+                onClick={() => setMoreOpen(!moreOpen)}
+                className="flex justify-between items-center px-4 py-2 text-sm hover:bg-gray-100"
+              >
+                <span>المزيد</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
 
-      {moreOpen && (
-        <div className="flex flex-col bg-gray-50">
-          {[
-            { id: "news", label: "الأخبار" },
-            { id: "volunteering", label: "التطوع" },
-            { id: "contact", label: "تواصل معنا" },
-          ].map((sub) => (
-            <button
-              key={sub.id}
-              onClick={() => {
-                setCurrentPage(sub.id);
-                setMobileMenuOpen(false);
-              }}
-              className="text-right px-6 py-2 text-sm hover:bg-gray-100"
-            >
-              {sub.label}
-            </button>
-          ))}
-        </div>
-      )}
+              {moreOpen && (
+                <div className="flex flex-col bg-gray-50">
+                  {[
+                    { id: "news", label: "الأخبار" },
+                    { id: "volunteering", label: "التطوع" },
+                    { id: "contact", label: "تواصل معنا" },
+                  ].map((sub) => (
+                    <button
+                      key={sub.id}
+                      onClick={() => {
+                        setCurrentPage(sub.id);
+                        setMobileMenuOpen(false);
+                      }}
+                      className="text-right px-6 py-2 text-sm hover:bg-gray-100"
+                    >
+                      {sub.label}
+                    </button>
+                  ))}
+                </div>
+              )}
 
-      {/* زر التبرع */}
-      <button
-        onClick={() => {
-          setCurrentPage("membership-donate");
-          setMobileMenuOpen(false);
-        }}
-        className="mx-4 mt-3 bg-primary text-white py-2 rounded-lg text-sm"
-      >
-        تبرع الآن
-      </button>
+              {/* زر التبرع */}
+              <button
+                onClick={() => {
+                  setCurrentPage("membership-donate");
+                  setMobileMenuOpen(false);
+                }}
+                className="mx-4 mt-3 bg-primary text-white py-2 rounded-lg text-sm"
+              >
+                تبرع الآن
+              </button>
 
-    </div>
-  </div>
-)}
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
