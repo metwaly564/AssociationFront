@@ -12,7 +12,6 @@ interface HeaderProps {
 export function Header({ currentPage, setCurrentPage, siteSettings = {} }: HeaderProps) {
   const { debugSettings, refreshSettings } = useTheme();
   const siteName = siteSettings?.site_name?.value;
-  const siteDescription = siteSettings?.site_description?.value;
   const siteLogo = siteSettings?.site_logo?.value;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -76,7 +75,7 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
             ) : (
               <Heart className="w-10 h-10 text-primary" fill="currentColor" />
             )}
-            
+
           </button>
 
           {/* === شريط التنقل === */}
@@ -99,10 +98,10 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                     <button
                       onClick={() => setAboutOpen((v) => !v)}
                       className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${aboutOpen ||
-                          currentPage.startsWith("about-") ||
-                          currentPage === "about"
-                          ? "bg-primary text-white"
-                          : "text-primary hover:bg-theme"
+                        currentPage.startsWith("about-") ||
+                        currentPage === "about"
+                        ? "bg-primary text-white"
+                        : "text-primary hover:bg-theme"
                         }`}
                     >
                       <span>{item.label}</span>
@@ -117,8 +116,8 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                             setAboutOpen(false);
                           }}
                           className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === 'about'
-                              ? 'bg-primary/10 text-primary'
-                              : 'text-primary hover:bg-theme'
+                            ? 'bg-primary/10 text-primary'
+                            : 'text-primary hover:bg-theme'
                             }`}
                         >
                           من نحن
@@ -131,8 +130,8 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                               setAboutOpen(false);
                             }}
                             className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
-                                ? "bg-emerald-50 text-emerald-700"
-                                : "text-gray-700 hover:bg-gray-50"
+                              ? "bg-emerald-50 text-emerald-700"
+                              : "text-gray-700 hover:bg-gray-50"
                               }`}
                           >
                             {sub.label}
@@ -169,8 +168,8 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                     <button
                       onClick={() => setFeedbackOpen((v) => !v)}
                       className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${feedbackOpen || currentPage.startsWith("feedback-")
-                          ? "bg-primary text-white"
-                          : "text-primary hover:bg-theme"
+                        ? "bg-primary text-white"
+                        : "text-primary hover:bg-theme"
                         }`}
                     >
                       <span>{item.label}</span>
@@ -186,8 +185,8 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                               setFeedbackOpen(false);
                             }}
                             className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
-                                ? "bg-emerald-50 text-emerald-700"
-                                : "text-gray-700 hover:bg-gray-50"
+                              ? "bg-emerald-50 text-emerald-700"
+                              : "text-gray-700 hover:bg-gray-50"
                               }`}
                           >
                             {sub.label}
@@ -216,10 +215,10 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                     <button
                       onClick={() => setProgramsOpen((v) => !v)}
                       className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${programsOpen ||
-                          currentPage === "programs" ||
-                          currentPage === "programs-annual"
-                          ? "bg-primary text-white"
-                          : "text-primary hover:bg-theme"
+                        currentPage === "programs" ||
+                        currentPage === "programs-annual"
+                        ? "bg-primary text-white"
+                        : "text-primary hover:bg-theme"
                         }`}
                     >
                       <span>{item.label}</span>
@@ -235,8 +234,8 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                               setProgramsOpen(false);
                             }}
                             className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
-                                ? "bg-emerald-50 text-emerald-700"
-                                : "text-gray-700 hover:bg-gray-50"
+                              ? "bg-emerald-50 text-emerald-700"
+                              : "text-gray-700 hover:bg-gray-50"
                               }`}
                           >
                             {sub.label}
@@ -265,13 +264,13 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                     <button
                       onClick={() => setMembershipOpen((v) => !v)}
                       className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${membershipOpen ||
-                          [
-                            "membership",
-                            "membership-jobs",
-                            "membership-partnership",
-                          ].includes(currentPage)
-                          ? "bg-primary text-white"
-                          : "text-primary hover:bg-theme"
+                        [
+                          "membership",
+                          "membership-jobs",
+                          "membership-partnership",
+                        ].includes(currentPage)
+                        ? "bg-primary text-white"
+                        : "text-primary hover:bg-theme"
                         }`}
                     >
                       <span>{item.label}</span>
@@ -287,8 +286,8 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                               setMembershipOpen(false);
                             }}
                             className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
-                                ? "bg-emerald-50 text-emerald-700"
-                                : "text-gray-700 hover:bg-gray-50"
+                              ? "bg-emerald-50 text-emerald-700"
+                              : "text-gray-700 hover:bg-gray-50"
                               }`}
                           >
                             {sub.label}
@@ -309,8 +308,8 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                   key={item.id}
                   onClick={() => setCurrentPage(item.id)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${currentPage === item.id
-                      ? "bg-emerald-600 text-white"
-                      : "text-gray-700 hover:bg-gray-100"
+                    ? "bg-emerald-600 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
                     }`}
                 >
                   {item.label}
@@ -332,14 +331,14 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                 <button
                   onClick={() => setGovernanceOpen((v) => !v)}
                   className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${governanceOpen ||
-                      [
-                        "gov-policies",
-                        "gov-operational-budget",
-                        "gov-financial-statements",
-                        "gov-reports",
-                      ].includes(currentPage)
-                      ? "bg-emerald-600 text-white"
-                      : "text-gray-700 hover:bg-gray-100"
+                    [
+                      "gov-policies",
+                      "gov-operational-budget",
+                      "gov-financial-statements",
+                      "gov-reports",
+                    ].includes(currentPage)
+                    ? "bg-emerald-600 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
                     }`}
                 >
                   <span>الحوكمة</span>
@@ -360,8 +359,8 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                           setGovernanceOpen(false);
                         }}
                         className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
-                            ? "bg-emerald-50 text-emerald-700"
-                            : "text-gray-700 hover:bg-gray-50"
+                          ? "bg-emerald-50 text-emerald-700"
+                          : "text-gray-700 hover:bg-gray-50"
                           }`}
                       >
                         {sub.label}
@@ -387,8 +386,8 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                 <button
                   onClick={() => setMoreOpen((v) => !v)}
                   className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${moreOpen || ["news", "volunteering", "contact"].includes(currentPage)
-                      ? "bg-emerald-600 text-white"
-                      : "text-gray-700 hover:bg-gray-100"
+                    ? "bg-emerald-600 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
                     }`}
                 >
                   <span>المزيد</span>
@@ -408,8 +407,8 @@ export function Header({ currentPage, setCurrentPage, siteSettings = {} }: Heade
                           setMoreOpen(false);
                         }}
                         className={`block w-full text-right px-4 py-2 text-sm transition-colors ${currentPage === sub.id
-                            ? "bg-emerald-50 text-emerald-700"
-                            : "text-gray-700 hover:bg-gray-50"
+                          ? "bg-emerald-50 text-emerald-700"
+                          : "text-gray-700 hover:bg-gray-50"
                           }`}
                       >
                         {sub.label}
