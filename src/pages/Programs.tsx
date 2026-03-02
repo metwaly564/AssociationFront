@@ -60,7 +60,7 @@ export function Programs() {
       beneficiaries: '500 أسرة',
       goals: 'تحسين مستوى المعيشة للأسر المحتاجة وضمان استقرارهم المالي',
       howToHelp: 'التبرع الشهري أو السنوي لكفالة أسرة',
-      image: 'https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://picsum.photos/seed/family/800/600',
     },
     {
       id: 2,
@@ -71,7 +71,7 @@ export function Programs() {
       beneficiaries: '800 مستفيد',
       goals: 'ضمان حصول المرضى على العلاج المناسب دون عوائق مالية',
       howToHelp: 'التبرع لصندوق العلاج أو التبرع بأجهزة طبية',
-      image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://picsum.photos/seed/health/800/600',
     },
     {
       id: 3,
@@ -82,7 +82,7 @@ export function Programs() {
       beneficiaries: '300 شاب وشابة',
       goals: 'تمكين الشباب من الاستقلال المالي وتقليل البطالة',
       howToHelp: 'دعم برامج التدريب أو توفير فرص توظيف',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://picsum.photos/seed/work/800/600',
     },
     {
       id: 4,
@@ -93,7 +93,7 @@ export function Programs() {
       beneficiaries: '600 طالب',
       goals: 'ضمان حصول جميع الأطفال على فرصة التعليم الجيد',
       howToHelp: 'كفالة طالب أو التبرع للحقائب المدرسية',
-      image: 'https://images.pexels.com/photos/8500344/pexels-photo-8500344.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://picsum.photos/seed/education/800/600',
     },
     {
       id: 5,
@@ -104,7 +104,7 @@ export function Programs() {
       beneficiaries: '150 أسرة',
       goals: 'توفير مسكن لائق وآمن للأسر المستحقة',
       howToHelp: 'التبرع لصندوق الإسكان',
-      image: 'https://images.pexels.com/photos/7031591/pexels-photo-7031591.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://picsum.photos/seed/home/800/600',
     },
     {
       id: 6,
@@ -115,7 +115,7 @@ export function Programs() {
       beneficiaries: '200 يتيم',
       goals: 'توفير رعاية متكاملة للأيتام وضمان حقوقهم',
       howToHelp: 'كفالة يتيم أو دعم البرامج الترفيهية',
-      image: 'https://images.pexels.com/photos/8422087/pexels-photo-8422087.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://picsum.photos/seed/orphans/800/600',
     },
   ];
 
@@ -127,25 +127,25 @@ export function Programs() {
     else if (p.category?.includes('تعليم') || p.category?.includes('education')) icon = GraduationCap;
     else if (p.category?.includes('توظيف') || p.category?.includes('employment')) icon = Briefcase;
     else if (p.category?.includes('إسكان') || p.category?.includes('housing')) icon = Home;
-    
+
     return {
       ...p,
       icon,
       beneficiaries: p.category || 'مستفيدون',
-      image: 'https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://picsum.photos/seed/charity/800/600',
     };
   });
 
   const filteredPrograms = activeFilter === 'all'
     ? formattedPrograms
     : formattedPrograms.filter(p => {
-        const cat = p.category?.toLowerCase() || '';
-        if (activeFilter === 'social') return cat.includes('اجتماعي');
-        if (activeFilter === 'health') return cat.includes('صحي');
-        if (activeFilter === 'education') return cat.includes('تعليم');
-        if (activeFilter === 'employment') return cat.includes('توظيف');
-        return true;
-      });
+      const cat = p.category?.toLowerCase() || '';
+      if (activeFilter === 'social') return cat.includes('اجتماعي');
+      if (activeFilter === 'health') return cat.includes('صحي');
+      if (activeFilter === 'education') return cat.includes('تعليم');
+      if (activeFilter === 'employment') return cat.includes('توظيف');
+      return true;
+    });
 
   const [selectedProgram, setSelectedProgram] = useState<typeof formattedPrograms[0] | null>(null);
 
@@ -166,11 +166,10 @@ export function Programs() {
             <button
               key={category.id}
               onClick={() => setActiveFilter(category.id)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all ${
-                activeFilter === category.id
-                  ? 'bg-emerald-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
+              className={`px-6 py-3 rounded-full font-semibold transition-all ${activeFilter === category.id
+                ? 'bg-emerald-600 text-white shadow-lg'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
             >
               {category.label}
             </button>
@@ -196,7 +195,7 @@ export function Programs() {
               >
                 <div className="relative h-56 overflow-hidden">
                   <img
-                    src={program.image || 'https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800'}
+                    src={program.image || 'https://picsum.photos/seed/charity/800/600'}
                     alt={program.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />

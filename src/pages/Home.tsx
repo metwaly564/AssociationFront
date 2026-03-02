@@ -125,16 +125,16 @@ export function Home() {
     { id: '8', name: 'مؤسسة الملك عبدالله', image_url: '/partners/kaaf.svg' },
   ];
 
-  const stats = homepageContent?.stats && homepageContent.stats.length > 0 
-    ? homepageContent.stats 
+  const stats = homepageContent?.stats && homepageContent.stats.length > 0
+    ? homepageContent.stats
     : defaultStats;
-  
-  const values = homepageContent?.values && homepageContent.values.length > 0 
-    ? homepageContent.values 
+
+  const values = homepageContent?.values && homepageContent.values.length > 0
+    ? homepageContent.values
     : defaultValues;
-  
-  const partners = homepageContent?.partners && homepageContent.partners.length > 0 
-    ? homepageContent.partners 
+
+  const partners = homepageContent?.partners && homepageContent.partners.length > 0
+    ? homepageContent.partners
     : defaultPartners;
 
   // Default projects fallback
@@ -143,19 +143,19 @@ export function Home() {
       title: 'برنامج كفالة الأسر',
       description: 'دعم شهري مستمر للأسر المحتاجة لتوفير احتياجاتهم الأساسية',
       beneficiaries: '500 أسرة',
-      image: 'https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=800',
     },
     {
       title: 'مشروع التأهيل المهني',
       description: 'تدريب وتأهيل الشباب على مهارات سوق العمل لتحقيق الاستقلال المالي',
       beneficiaries: '300 شاب',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800',
     },
     {
       title: 'برنامج الرعاية الصحية',
       description: 'توفير العلاجات والأجهزة الطبية للمرضى المحتاجين',
       beneficiaries: '800 مستفيد',
-      image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800',
     },
   ];
 
@@ -197,7 +197,7 @@ export function Home() {
                   {heroSection.button_text}
                 </button>
               )}
-              <button 
+              <button
                 onClick={() => {
                   if ((window as any).navigateTo) {
                     (window as any).navigateTo('contact');
@@ -239,10 +239,10 @@ export function Home() {
               {aboutSection?.button_text && (
                 <button
                   onClick={() => {
-                      if ((window as any).navigateTo) {
-                        (window as any).navigateTo('about');
-                      }
-                    }}
+                    if ((window as any).navigateTo) {
+                      (window as any).navigateTo('about');
+                    }
+                  }}
                   className="flex items-center gap-2 text-emerald-600 font-bold text-lg hover:gap-3 transition-all"
                 >
                   {aboutSection.button_text}
@@ -252,7 +252,9 @@ export function Home() {
             </div>
             <div className="relative">
               <img
-                src={aboutSection?.image_url || 'https://images.pexels.com/photos/6647034/pexels-photo-6647034.jpeg?auto=compress&cs=tinysrgb&w=800'}
+                src={'/image.png'}
+
+                //  src={aboutSection?.image_url || 'https://images.pexels.com/photos/6647034/pexels-photo-6647034.jpeg?auto=compress&cs=tinysrgb&w=800' || '/image.png'}
                 alt="عملنا الخيري"
                 className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
               />
@@ -333,7 +335,7 @@ export function Home() {
               >
                 <div className="relative h-56 overflow-hidden">
                   <img
-                    src={'image' in project ? project.image : 'https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800'}
+                    src={'image' in project ? project.image : 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=800'}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
@@ -347,7 +349,7 @@ export function Home() {
                   <p className="text-gray-600 leading-relaxed mb-4">
                     {'description' in project ? project.description : project.short_description || ''}
                   </p>
-                  <button 
+                  <button
                     onClick={() => {
                       if ((window as any).navigateTo) {
                         (window as any).navigateTo('programs');
@@ -396,7 +398,7 @@ export function Home() {
                   >
                     <div className="relative h-56 overflow-hidden">
                       <img
-                        src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800"
                         alt={newsItem.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       />
@@ -462,60 +464,60 @@ export function Home() {
         </div>
       </section>
 
-  {/* Partners Section */}
-{/* Partners Section */}
-<section className="container mx-auto px-4 py-20">
-  <div className="text-center mb-14">
-    {partnersTitleSection?.subtitle && (
-      <span className="text-emerald-600 font-semibold text-sm mb-3 block tracking-wide">
-        {partnersTitleSection.subtitle}
-      </span>
-    )}
+      {/* Partners Section */}
+      {/* Partners Section */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="text-center mb-14">
+          {partnersTitleSection?.subtitle && (
+            <span className="text-emerald-600 font-semibold text-sm mb-3 block tracking-wide">
+              {partnersTitleSection.subtitle}
+            </span>
+          )}
 
-    <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-      {partnersTitleSection?.title || 'الجهات المشرفة والداعمة'}
-    </h2>
-  </div>
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+            {partnersTitleSection?.title || 'الجهات المشرفة والداعمة'}
+          </h2>
+        </div>
 
-  <div className="relative">
-    <Swiper
-      modules={[Autoplay]}
-      spaceBetween={40}
-      slidesPerView={2}
-      loop={true}
-      speed={5000}
-      autoplay={{
-        delay: 0,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
-      breakpoints={{
-        640: { slidesPerView: 3 },
-        768: { slidesPerView: 4 },
-        1024: { slidesPerView: 6 },
-      }}
-    >
-      {partners.map((partner) => (
-        <SwiperSlide key={partner.id}>
-          <div className="flex flex-col items-center justify-center h-64 group">
-            <div>
-              <img
-                src={partner.image_url || '/partners/default.svg'}
-                alt={partner.name}
-                className="h-28 object-contain transition duration-500"
-              />
-            </div>
+        <div className="relative">
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={40}
+            slidesPerView={2}
+            loop={true}
+            speed={5000}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            breakpoints={{
+              640: { slidesPerView: 3 },
+              768: { slidesPerView: 4 },
+              1024: { slidesPerView: 6 },
+            }}
+          >
+            {partners.map((partner) => (
+              <SwiperSlide key={partner.id}>
+                <div className="flex flex-col items-center justify-center h-64 group">
+                  <div>
+                    <img
+                      src={partner.image_url || '/partners/default.svg'}
+                      alt={partner.name}
+                      className="h-28 object-contain transition duration-500"
+                    />
+                  </div>
 
-            {/* اسم الجهة */}
-            <p className="mt-4 text-sm font-medium text-gray-600 text-center group-hover:text-emerald-600 transition duration-300">
-              {partner.name}
-            </p>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </div>
-</section>
+                  {/* اسم الجهة */}
+                  <p className="mt-4 text-sm font-medium text-gray-600 text-center group-hover:text-emerald-600 transition duration-300">
+                    {partner.name}
+                  </p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-16">
