@@ -1,4 +1,5 @@
 import { Heart, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { CmsImage } from './CmsImage';
 
 interface FooterProps {
   setCurrentPage: (page: string) => void;
@@ -6,7 +7,7 @@ interface FooterProps {
 }
 
 export function Footer({ setCurrentPage, siteSettings = {} }: FooterProps) {
-  const siteName = siteSettings?.site_name?.value ;
+  const siteName = siteSettings?.site_name?.value;
   const siteDescription = siteSettings?.site_description?.value || 'نعمل على توفير الرعاية والدعم للأسر المحتاجة في مجتمعنا، ونسعى لبناء مستقبل أفضل من خلال برامجنا المتنوعة.';
   const siteLogo = siteSettings?.site_logo?.value;
   const contactEmail = siteSettings?.contact_email?.value || 'info@reayaty.org.sa';
@@ -25,7 +26,7 @@ export function Footer({ setCurrentPage, siteSettings = {} }: FooterProps) {
           <div>
             <div className="flex items-center gap-3 mb-4">
               {siteLogo ? (
-                <img src={siteLogo} alt={siteName} className="h-14 w-auto object-contain" />
+                <CmsImage src={siteLogo} alt={siteName} className="h-14 w-auto object-contain" />
               ) : (
                 <Heart className="w-8 h-8 text-emerald-500" fill="currentColor" />
               )}
