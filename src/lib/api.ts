@@ -157,7 +157,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/news`);
       if (!response.ok) throw new Error('فشل جلب الأخبار');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching news:', error);
       return [];
@@ -171,7 +173,9 @@ export const publicApi = {
         if (response.status === 404) return null;
         throw new Error('فشل جلب الخبر');
       }
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching news item:', error);
       return null;
@@ -182,7 +186,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/projects`);
       if (!response.ok) throw new Error('فشل جلب المشاريع');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching projects:', error);
       return [];
@@ -193,7 +199,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/team`);
       if (!response.ok) throw new Error('فشل جلب فريق العمل');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching team:', error);
       return [];
@@ -204,7 +212,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/members`);
       if (!response.ok) throw new Error('فشل جلب أعضاء الجمعية');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching members:', error);
       return [];
@@ -215,7 +225,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/donations/products`);
       if (!response.ok) throw new Error('فشل جلب منتجات التبرع');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching donation products:', error);
       return [];
@@ -244,7 +256,9 @@ export const publicApi = {
         const error = await response.json();
         throw new Error(error.error || 'فشل إرسال التبرع');
       }
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error: any) {
       console.error('Error submitting donation:', error);
       throw error;
@@ -255,7 +269,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/categories`);
       if (!response.ok) throw new Error('فشل جلب التصنيفات');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching categories:', error);
       // Return default categories if API fails
@@ -271,7 +287,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/homepage`);
       if (!response.ok) throw new Error('فشل جلب محتوى الصفحة الرئيسية');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching homepage content:', error);
       // Return empty structure if API fails
@@ -291,7 +309,9 @@ export const publicApi = {
         if (response.status === 404) return null;
         throw new Error('فشل جلب الصفحة');
       }
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching page:', error);
       return null;
@@ -302,7 +322,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/about`);
       if (!response.ok) throw new Error('فشل جلب محتوى صفحة "من نحن"');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching about content:', error);
       return {
@@ -316,7 +338,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/programs-page`);
       if (!response.ok) throw new Error('فشل جلب محتوى صفحة البرامج والمشاريع');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching programs page content:', error);
       return {
@@ -330,7 +354,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/homepage-featured`);
       if (!response.ok) throw new Error('فشل جلب المحتوى المميز');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching featured content:', error);
       return {
@@ -344,7 +370,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/team-page`);
       if (!response.ok) throw new Error('فشل جلب محتوى صفحة فريق العمل');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching team page content:', error);
       return {
@@ -359,7 +387,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/licenses`);
       if (!response.ok) throw new Error('فشل جلب التراخيص');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching licenses:', error);
       return [];
@@ -370,7 +400,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/contact-page`);
       if (!response.ok) throw new Error('فشل جلب محتوى صفحة التواصل');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching contact page content:', error);
       return {
@@ -385,7 +417,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/volunteering-page`);
       if (!response.ok) throw new Error('فشل جلب محتوى صفحة التطوع');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching volunteering page content:', error);
       return {
@@ -400,7 +434,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/membership-page`);
       if (!response.ok) throw new Error('فشل جلب محتوى صفحة العضوية');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching membership page content:', error);
       return {
@@ -414,7 +450,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/policies`);
       if (!response.ok) throw new Error('فشل جلب السياسات');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching policies:', error);
       return {
@@ -428,7 +466,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/financial-statements`);
       if (!response.ok) throw new Error('فشل جلب القوائم المالية');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching financial statements:', error);
       return {
@@ -442,7 +482,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/reports`);
       if (!response.ok) throw new Error('فشل جلب التقارير');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching reports:', error);
       return {
@@ -456,7 +498,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/operational-budget`);
       if (!response.ok) throw new Error('فشل جلب الخطة التشغيلية والموازنة');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching operational budget:', error);
       return {
@@ -470,7 +514,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/settings`);
       if (!response.ok) throw new Error('فشل جلب إعدادات الموقع');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching site settings:', error);
       return {
@@ -483,7 +529,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/strategic-framework`);
       if (!response.ok) throw new Error('فشل جلب محتوى الإطار الاستراتيجي');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching strategic framework:', error);
       return {
@@ -499,7 +547,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/general-assembly`);
       if (!response.ok) throw new Error('فشل جلب محتوى الجمعية العمومية');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching general assembly:', error);
       return {
@@ -514,7 +564,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/management-board`);
       if (!response.ok) throw new Error('فشل جلب محتوى مجلس الإدارة');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching management board:', error);
       return {
@@ -528,7 +580,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/org-structure`);
       if (!response.ok) throw new Error('فشل جلب محتوى الهيكل التنظيمي');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching org structure:', error);
       return {
@@ -542,7 +596,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/committees`);
       if (!response.ok) throw new Error('فشل جلب محتوى اللجان');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching committees:', error);
       return {
@@ -556,7 +612,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/supervising-authorities`);
       if (!response.ok) throw new Error('فشل جلب الجهات المشرفة');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching supervising authorities:', error);
       return [];
@@ -585,7 +643,9 @@ export const publicApi = {
         throw new Error(error.error || 'فشل إرسال الاستبيان');
       }
 
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error: any) {
       console.error('Error submitting feedback:', error);
       throw error;
@@ -609,7 +669,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/feedback/stats`);
       if (!response.ok) throw new Error('فشل جلب إحصائيات الاستبيانات');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching feedback stats:', error);
       return {
@@ -624,7 +686,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/offices-branches`);
       if (!response.ok) throw new Error('فشل جلب محتوى المكاتب والفروع');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching offices/branches:', error);
       return {
@@ -638,7 +702,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/annual-reports`);
       if (!response.ok) throw new Error('فشل جلب محتوى التقارير السنوية');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching annual reports:', error);
       return {
@@ -652,7 +718,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/jobs`);
       if (!response.ok) throw new Error('فشل جلب محتوى الوظائف');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching jobs:', error);
       return {
@@ -699,7 +767,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/partnership`);
       if (!response.ok) throw new Error('فشل جلب محتوى الشراكة');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching partnership:', error);
       return {
@@ -732,7 +802,9 @@ export const publicApi = {
         throw new Error(errorMessage);
       }
 
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error: any) {
       console.error('Error submitting partnership request:', error);
       throw error;
@@ -743,7 +815,9 @@ export const publicApi = {
     try {
       const response = await fetch(`${API_BASE}/donate`);
       if (!response.ok) throw new Error('فشل جلب محتوى التبرع');
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error) {
       console.error('Error fetching donate:', error);
       return {
@@ -776,7 +850,9 @@ export const publicApi = {
         const error = await response.json();
         throw new Error(error.error || 'فشل إرسال طلب التطوع');
       }
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error: any) {
       console.error('Error submitting volunteering application:', error);
       throw error;
@@ -805,7 +881,9 @@ export const publicApi = {
         const error = await response.json();
         throw new Error(error.error || 'فشل إرسال طلب العضوية');
       }
-      return response.json();
+      const text = await response.text();
+      const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+      return JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
     } catch (error: any) {
       console.error('Error submitting membership application:', error);
       throw error;

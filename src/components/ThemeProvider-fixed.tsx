@@ -121,7 +121,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       console.log('API Response:', response.status, response.statusText);
 
       if (response.ok) {
-        const data = await response.json();
+        const text = await response.text();
+        const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+        const data = JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
         console.log('API Data:', data);
 
         if (data.settings) {
@@ -178,7 +180,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       const API_BASE = import.meta.env.VITE_API_BASE || 'https://associationback.onrender.com/api/public';
       const response = await fetch(`${API_BASE}/settings`);
       if (response.ok) {
-        const data = await response.json();
+        const text = await response.text();
+        const cmsBaseUrl = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+        const data = JSON.parse(text.replace(/http:\/\/localhost:3001/g, cmsBaseUrl));
         console.log('📊 API Response:', data);
         console.log('🎨 Current applied colors:', colors);
       } else {

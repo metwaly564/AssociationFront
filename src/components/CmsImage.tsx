@@ -23,6 +23,9 @@ export function CmsImage({ src, alt = '', className = '', ...props }: CmsImagePr
     // Convert relative uploads path to full CMS URL
     const cmsBase = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
     imageUrl = `${cmsBase}${src}`;
+  } else if (src && src.includes('http://localhost:3001')) {
+    const cmsBase = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
+    imageUrl = src.replace('http://localhost:3001', cmsBase);
   }
 
   return (
