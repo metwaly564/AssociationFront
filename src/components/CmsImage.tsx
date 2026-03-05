@@ -21,7 +21,7 @@ export function CmsImage({ src, alt = '', className = '', ...props }: CmsImagePr
 
   if (src && src.startsWith('/uploads/')) {
     // Convert relative uploads path to full CMS URL
-    const cmsBase = import.meta.env.VITE_CMS_BASE || 'http://localhost:3001';
+    const cmsBase = import.meta.env.VITE_CMS_BASE || 'https://associationback.onrender.com';
     imageUrl = `${cmsBase}${src}`;
   }
 

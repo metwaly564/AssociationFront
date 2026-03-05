@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Proxy request to CMS
-    const cmsUrl = `http://localhost:3001/api/uploads/${filename}`;
+    const cmsUrl = `https://associationback.onrender.com/api/uploads/${filename}`;
     console.log('Proxying file request to:', cmsUrl);
 
     const response = await fetch(cmsUrl);

@@ -81,8 +81,8 @@ const defaultColors: ThemeColors = {
 const ThemeContext = createContext<ThemeContextType>({
   colors: defaultColors,
   loading: true,
-  refreshSettings: async () => {},
-  debugSettings: async () => {},
+  refreshSettings: async () => { },
+  debugSettings: async () => { },
 });
 
 export const useTheme = () => useContext(ThemeContext);
@@ -116,7 +116,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     try {
       console.log('🎨 Loading theme settings...');
       // Use the same API base as other API calls
-      const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3001/api/public';
+      const API_BASE = import.meta.env.VITE_API_BASE || 'https://associationback.onrender.com/api/public';
       const response = await fetch(`${API_BASE}/settings`);
       console.log('API Response:', response.status, response.statusText);
 
@@ -175,7 +175,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const debugSettings = async () => {
     console.log('🔍 Debugging theme settings...');
     try {
-      const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3001/api/public';
+      const API_BASE = import.meta.env.VITE_API_BASE || 'https://associationback.onrender.com/api/public';
       const response = await fetch(`${API_BASE}/settings`);
       if (response.ok) {
         const data = await response.json();
