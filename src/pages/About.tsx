@@ -135,7 +135,12 @@ export function About() {
 
       {/* Page Content from CMS */}
       {pageData?.body ? (
-        <div dangerouslySetInnerHTML={{ __html: pageData.body }} />
+        <section className="container mx-auto px-4 py-12">
+          <div
+            className="max-w-4xl mx-auto text-gray-700 leading-relaxed prose prose-lg break-words overflow-x-hidden"
+            dangerouslySetInnerHTML={{ __html: pageData.body }}
+          />
+        </section>
       ) : (
         <>
           {/* Default Content */}

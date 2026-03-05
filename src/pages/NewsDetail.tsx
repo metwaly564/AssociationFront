@@ -161,7 +161,7 @@ export function NewsDetail({ slug, onBack }: NewsDetailProps) {
           <div className="prose prose-lg max-w-none">
             {newsItem.body ? (
               <div
-                className="text-gray-700 leading-relaxed text-lg"
+                className="text-gray-700 leading-relaxed text-lg break-words overflow-x-hidden max-w-full"
                 dangerouslySetInnerHTML={{ __html: newsItem.body }}
               />
             ) : (

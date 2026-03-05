@@ -119,7 +119,7 @@ useEffect(() => {
       case 'about-licenses':
         return <Licenses />;
       case 'programs':
-        return <Programs />;
+        return <Programs onDonateClick={() => setCurrentPage('membership-donate')} />;
       case 'programs-annual':
         return <AnnualReports />;
       case 'feedback-employees':

@@ -1,8 +1,10 @@
-import { Heart, GraduationCap, Briefcase, Home, Users, Stethoscope, ChevronLeft } from 'lucide-react';
+import { Heart, GraduationCap, Briefcase, Home, Stethoscope, ChevronLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { publicApi, type Project } from '../lib/api';
 
-export function Programs() {
+type ProgramsProps = { onDonateClick?: () => void };
+
+export function Programs({ onDonateClick }: ProgramsProps = {}) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [programs, setPrograms] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -16,6 +18,7 @@ export function Programs() {
   const loadPrograms = async () => {
     try {
       const data = await publicApi.getProjects();
+      console.log(await publicApi.getProjects());
       setPrograms(data);
     } catch (error) {
       console.error('Error loading programs:', error);
@@ -27,6 +30,7 @@ export function Programs() {
   const loadPageContent = async () => {
     try {
       const data = await publicApi.getProgramsPageContent();
+      console.log(data);
       if (data.content && data.content.length > 0) {
         const heroSection = data.content.find((c: any) => c.section_key === 'hero_title');
         if (heroSection) {
@@ -49,76 +53,6 @@ export function Programs() {
     { id: 'employment', label: 'التوظيف والتأهيل' },
   ];
 
-  // بيانات افتراضية
-  const defaultPrograms = [
-    {
-      id: 1,
-      category: 'social',
-      icon: Heart,
-      title: 'برنامج كفالة الأسر',
-      description: 'توفير دعم مالي شهري منتظم للأسر المحتاجة لتغطية احتياجاتهم الأساسية من مأكل ومشرب وسكن.',
-      beneficiaries: '500 أسرة',
-      goals: 'تحسين مستوى المعيشة للأسر المحتاجة وضمان استقرارهم المالي',
-      howToHelp: 'التبرع الشهري أو السنوي لكفالة أسرة',
-      image: 'https://picsum.photos/seed/family/800/600',
-    },
-    {
-      id: 2,
-      category: 'health',
-      icon: Stethoscope,
-      title: 'برنامج الرعاية الصحية',
-      description: 'تقديم الدعم الصحي والعلاجي للمرضى المحتاجين، وتوفير الأجهزة الطبية والأدوية الضرورية.',
-      beneficiaries: '800 مستفيد',
-      goals: 'ضمان حصول المرضى على العلاج المناسب دون عوائق مالية',
-      howToHelp: 'التبرع لصندوق العلاج أو التبرع بأجهزة طبية',
-      image: 'https://picsum.photos/seed/health/800/600',
-    },
-    {
-      id: 3,
-      category: 'employment',
-      icon: Briefcase,
-      title: 'مشروع التأهيل المهني',
-      description: 'تدريب وتأهيل الشباب على المهارات المطلوبة في سوق العمل لمساعدتهم في الحصول على فرص وظيفية.',
-      beneficiaries: '300 شاب وشابة',
-      goals: 'تمكين الشباب من الاستقلال المالي وتقليل البطالة',
-      howToHelp: 'دعم برامج التدريب أو توفير فرص توظيف',
-      image: 'https://picsum.photos/seed/work/800/600',
-    },
-    {
-      id: 4,
-      category: 'education',
-      icon: GraduationCap,
-      title: 'برنامج الدعم التعليمي',
-      description: 'توفير المستلزمات الدراسية والرسوم الدراسية لأبناء الأسر المحتاجة لضمان استمرارهم في التعليم.',
-      beneficiaries: '600 طالب',
-      goals: 'ضمان حصول جميع الأطفال على فرصة التعليم الجيد',
-      howToHelp: 'كفالة طالب أو التبرع للحقائب المدرسية',
-      image: 'https://picsum.photos/seed/education/800/600',
-    },
-    {
-      id: 5,
-      category: 'social',
-      icon: Home,
-      title: 'مشروع الإسكان التنموي',
-      description: 'ترميم وصيانة منازل الأسر المحتاجة لتوفير بيئة سكنية آمنة وصحية.',
-      beneficiaries: '150 أسرة',
-      goals: 'توفير مسكن لائق وآمن للأسر المستحقة',
-      howToHelp: 'التبرع لصندوق الإسكان',
-      image: 'https://picsum.photos/seed/home/800/600',
-    },
-    {
-      id: 6,
-      category: 'social',
-      icon: Users,
-      title: 'برنامج الأيتام',
-      description: 'رعاية شاملة للأيتام تشمل الدعم المالي والتعليمي والنفسي لضمان مستقبل أفضل لهم.',
-      beneficiaries: '200 يتيم',
-      goals: 'توفير رعاية متكاملة للأيتام وضمان حقوقهم',
-      howToHelp: 'كفالة يتيم أو دعم البرامج الترفيهية',
-      image: 'https://picsum.photos/seed/orphans/800/600',
-    },
-  ];
-
   // تحويل البيانات من API إلى التنسيق المطلوب
   const formattedPrograms = programs.map((p) => {
     // تحديد الأيقونة حسب الفئة
@@ -127,25 +61,25 @@ export function Programs() {
     else if (p.category?.includes('تعليم') || p.category?.includes('education')) icon = GraduationCap;
     else if (p.category?.includes('توظيف') || p.category?.includes('employment')) icon = Briefcase;
     else if (p.category?.includes('إسكان') || p.category?.includes('housing')) icon = Home;
-
+    
     return {
       ...p,
       icon,
       beneficiaries: p.category || 'مستفيدون',
-      image: 'https://picsum.photos/seed/charity/800/600',
+      image: 'https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800',
     };
   });
 
   const filteredPrograms = activeFilter === 'all'
     ? formattedPrograms
     : formattedPrograms.filter(p => {
-      const cat = p.category?.toLowerCase() || '';
-      if (activeFilter === 'social') return cat.includes('اجتماعي');
-      if (activeFilter === 'health') return cat.includes('صحي');
-      if (activeFilter === 'education') return cat.includes('تعليم');
-      if (activeFilter === 'employment') return cat.includes('توظيف');
-      return true;
-    });
+        const cat = p.category?.toLowerCase() || '';
+        if (activeFilter === 'social') return cat.includes('اجتماعي');
+        if (activeFilter === 'health') return cat.includes('صحي');
+        if (activeFilter === 'education') return cat.includes('تعليم');
+        if (activeFilter === 'employment') return cat.includes('توظيف');
+        return true;
+      });
 
   const [selectedProgram, setSelectedProgram] = useState<typeof formattedPrograms[0] | null>(null);
 
@@ -166,10 +100,11 @@ export function Programs() {
             <button
               key={category.id}
               onClick={() => setActiveFilter(category.id)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all ${activeFilter === category.id
-                ? 'bg-emerald-600 text-white shadow-lg'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+              className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                activeFilter === category.id
+                  ? 'bg-emerald-600 text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
             >
               {category.label}
             </button>
@@ -195,7 +130,7 @@ export function Programs() {
               >
                 <div className="relative h-56 overflow-hidden">
                   <img
-                    src={program.image || 'https://picsum.photos/seed/charity/800/600'}
+                    src={program.image || 'https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800'}
                     alt={program.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
@@ -210,7 +145,7 @@ export function Programs() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{program.title}</h3>
                   <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
-                    {program.description || program.short_description || ''}
+                    {program.short_description || program.body || ''}
                   </p>
                   <button className="flex items-center gap-2 text-emerald-600 font-semibold hover:gap-3 transition-all">
                     اعرف المزيد
@@ -258,25 +193,50 @@ export function Programs() {
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <div>
+              <div className="space-y-6 min-w-0">
+                <div className="min-w-0 max-w-full">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">نبذة عن البرنامج</h3>
-                  <p className="text-gray-700 leading-relaxed">{selectedProgram.description}</p>
+                  {selectedProgram.body ? (
+                    <div
+                      className="text-gray-700 leading-relaxed prose prose-sm max-w-none break-words overflow-x-hidden"
+                      dangerouslySetInnerHTML={{ __html: selectedProgram.body }}
+                    />
+                  ) : (
+                    <p className="text-gray-700 leading-relaxed break-words overflow-x-hidden max-w-full">
+                      {selectedProgram.short_description || '—'}
+                    </p>
+                  )}
+
+<button
+  type="button"
+  onClick={() => {
+    const url = selectedProgram.file_url;
+
+    if (url) {
+      const fullUrl = url.startsWith('http')
+        ? url
+        : `${process.env.NEXT_PUBLIC_BASE_URL || ''}${url}`;
+
+      window.open(fullUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      alert('لا يوجد ملف مرفق لهذا البرنامج.');
+    }
+  }}
+  className="mt-4 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors"
+>
+  تحميل الملف
+</button>
                 </div>
 
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">الأهداف</h3>
-                  <p className="text-gray-700 leading-relaxed">{selectedProgram.goals}</p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">كيف تساهم</h3>
-                  <p className="text-gray-700 leading-relaxed">{selectedProgram.howToHelp}</p>
-                </div>
-
-                <button className="w-full bg-emerald-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-emerald-700 transition-colors">
+                {/* <button
+                  onClick={() => {
+                    setSelectedProgram(null);
+                    onDonateClick?.();
+                  }}
+                  className="w-full bg-emerald-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-emerald-700 transition-colors"
+                >
                   ساهم في هذا البرنامج
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
